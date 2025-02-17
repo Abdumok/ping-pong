@@ -16,6 +16,16 @@ window.tracer(0)
 r_paddle= Paddle(position=(370, 0))
 l_paddle= Paddle(position=(-380, 0))
 
+# Control Paddle move:
+window.listen()
+window.onkey(fun=r_paddle.go_up, key="Up")
+window.onkey(fun=r_paddle.go_down, key="Down")
+
+window.onkey(fun=l_paddle.go_up, key="w")
+window.onkey(fun=l_paddle.go_down, key="s")
+
+
+
 # Create Net:
 net= Net()
 # Create Ball:
