@@ -3,7 +3,6 @@ from paddle import Paddle
 from net import Net
 from ball import Ball
 from scoreboard import Score
-
 import time
 
 #Setup Main Screen
@@ -14,7 +13,20 @@ window.title('Ping Pong v1.00')
 window.tracer(0)
 
 
-# Create Paddle:
+# Create Net:
+net= Net()
+# Create Ball:
+ball= Ball()
+
+#Add players name:
+player1= window.textinput(title="Player1", prompt="Enter your name: ")
+player2= window.textinput(title="Player2", prompt="Enter your name: ")
+
+# Create Score:
+r_score= Score( position=(200, 280), name=player1 )
+l_score= Score( position=(-200, 280), name=player2 )
+
+# Create Paddles:
 r_paddle= Paddle(position=(370, 0))
 l_paddle= Paddle(position=(-380, 0))
 
@@ -25,16 +37,6 @@ window.onkey(fun=r_paddle.go_down, key="Down")
 
 window.onkey(fun=l_paddle.go_up, key="w")
 window.onkey(fun=l_paddle.go_down, key="s")
-
-
-
-# Create Net:
-net= Net()
-# Create Ball:
-ball= Ball()
-# Create Score:
-r_score= Score( position=(200, 280) )
-l_score= Score( position=(-200, 280) )
 
 
 game_on= True
@@ -61,8 +63,6 @@ while game_on:
     elif ball.xcor() < -420:
         ball.goto(0, 0)
         r_score.increase()
-
-
 
 
     time.sleep(0.005)
