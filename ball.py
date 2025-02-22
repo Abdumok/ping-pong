@@ -1,6 +1,5 @@
 from turtle import Turtle
-X_move=1
-Y_move=1
+
 class Ball(Turtle):
     def __init__(self):
         super().__init__()

@@ -4,6 +4,7 @@ from net import Net
 from ball import Ball
 from scoreboard import Score
 import time
+BALL_SPEED = 0.0001
 
 #Setup Main Screen
 window = Screen()
@@ -56,16 +57,18 @@ while game_on:
 
     # If the Right paddle miss the ball:
     if ball.xcor() > 420:
+        ball.x_move *= -1
         ball.goto(0,0)
         l_score.increase()
 
     # if the left paddle miss the ball:
     elif ball.xcor() < -420:
+        ball.x_move *= -1
         ball.goto(0, 0)
         r_score.increase()
 
 
-    time.sleep(0.005)
+    time.sleep(BALL_SPEED)
     window.update()
 
 
